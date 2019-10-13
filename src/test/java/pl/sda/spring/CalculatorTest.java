@@ -27,4 +27,44 @@ public class CalculatorTest {
         //then
         Assert.assertEquals(5.0, actual, 0.00000001);
     }
+
+    @Test
+    public void shouldReturnTreeForOperationSubtraction() {
+        //given
+        double arg1 = 5.0;
+        double arg2 = 2.0;
+
+        // then
+        double actual = calculator.calculate(OperationType.SUBTRACTION, arg1, arg2);
+
+        //when
+        Assert.assertEquals(3.0, actual, 0.0000001);
+    }
+
+    @Test
+    public void shuoldCorrectDivisionOperation() {
+        //given
+        double arg1 = 6.0;
+        double arg2 = 2.0;
+
+        // then
+        double actual = calculator.calculate(OperationType.DIVISION, arg1, arg2);
+        System.out.println(actual);
+        //when
+        Assert.assertEquals(3.0, actual, 0.0000001);
+    }
+
+    @Test( expected = RuntimeException.class)
+    public void coulndDoDivisionByZeroOperation() {
+        double arg1 = 6.0;
+        double arg2 = 0.0;
+
+        // then
+        double actual = calculator.calculate(OperationType.DIVISION, arg1, arg2);
+        System.out.println(actual);
+        //when
+        Assert.assertEquals(3.0, actual, 0.0000001);
+    }
+
+
 }
