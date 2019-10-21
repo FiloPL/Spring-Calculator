@@ -42,6 +42,17 @@ public class CalculatorTest {
     }
 
     @Test
+    public void shouldCorrentMultiplication() {
+        // given
+        double arg1 = 6.0;
+        double arg2 = 10.0;
+        // then
+        double actualValue = calculator.calculate(OperationType.MULTIPLICATION, arg1, arg2);
+        System.out.println(actualValue);
+        // when
+        Assert.assertEquals(60.0, actualValue, 0.000001);
+    }
+    @Test
     public void shuoldCorrectDivisionOperation() {
         //given
         double arg1 = 6.0;
@@ -54,16 +65,43 @@ public class CalculatorTest {
         Assert.assertEquals(3.0, actual, 0.0000001);
     }
 
-    @Test( expected = RuntimeException.class)
+    @Test( expected = AssertionError.class)
     public void coulndDoDivisionByZeroOperation() {
         double arg1 = 6.0;
         double arg2 = 0.0;
 
         // then
         double actual = calculator.calculate(OperationType.DIVISION, arg1, arg2);
-        System.out.println(actual);
+
         //when
-        Assert.assertEquals(3.0, actual, 0.0000001);
+        Assert.assertEquals(0.0, actual, 0.0000001);
+    }
+
+    @Test
+    public void shouldCorrectDoPercentageOperation() {
+        // given
+        double arg1 = 600.0;
+        double arg2 = 10.0;
+
+        // then
+        double acutalValue = calculator.calculate(OperationType.PERCENTAGE, arg1, arg2);
+        System.out.println(acutalValue);
+
+        // when
+        Assert.assertEquals(60.0, acutalValue, 0.000001);
+    }
+
+    @Test
+    public void shouldCorrectDoPowerTwoValue() {
+        // given
+        double arg1 = 5.0;
+        double arg2 = 4.0;
+
+        // then
+        double actualValue = calculator.calculate(OperationType.POWER, arg1, arg2);
+
+        // when
+        Assert.assertEquals(625.0, actualValue, 0.00001);
     }
 
 
